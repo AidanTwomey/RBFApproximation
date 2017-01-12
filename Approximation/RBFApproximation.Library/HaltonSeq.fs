@@ -1,6 +1,7 @@
 ﻿namespace RBFApproximation.Library
 
 open System
+open MathNet.Numerics.LinearAlgebra
 
 module Geometry =
 
@@ -12,6 +13,9 @@ module Geometry =
         match point with
         | Point1D(x)   -> x
         | Point2D(x,y) -> Math.Sqrt( Math.Pow( x, (double)p) + Math.Pow( y, double(p)) )
+
+    let ngrid (X1:Vector<double>) (X2:Vector<double>) =
+        DenseMatrix.init X1.Count X2.Count (fun i j -> X1.[i])
 
 module Sequences =
 
@@ -25,7 +29,7 @@ module Sequences =
               else
                 result
 
-        let  naturalNumbers = 1 |> List.unfold (fun i -> if (i > n) then None else Some(i, i+1))           
+        let  naturalNumbers = 1 |> Seq.unfold (fun i -> if (i > n) then None else Some(i, i+1)) |> Seq.toList      
 
         let create1D = 
             naturalNumbers |> List.map ( fun i -> Geometry.Point1D(createPoint i 1.0 2.0 0.0))     
