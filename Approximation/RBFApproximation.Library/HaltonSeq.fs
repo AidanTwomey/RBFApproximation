@@ -2,6 +2,7 @@
 
 open System
 open MathNet.Numerics.LinearAlgebra
+open Functions
 
 module Geometry =
 
@@ -15,7 +16,22 @@ module Geometry =
         | Point2D(x,y) -> Math.Sqrt( Math.Pow( x, (double)p) + Math.Pow( y, double(p)) )
 
     let ngrid (X1:Vector<double>) (X2:Vector<double>) =
-        DenseMatrix.init X1.Count X2.Count (fun i j -> X1.[i])
+        (DenseMatrix.init X1.Count X2.Count (fun i j -> X1.[i]),DenseMatrix.init X1.Count X2.Count (fun i j -> X2.[j]))
+
+    let distanceMatrix (dsites:Matrix<double>) (ctrs:Matrix<double>) =
+        
+        let rec fill i dm =
+                       
+            if i < dsites.ColumnCount 
+                then 
+                    let (d,c) = ngrid (dsites.Column(i)) (ctrs.Column(i)) 
+                    fill (i+1) (dm + ( (d - c) |> Matrix.map square )) 
+                else 
+                    dm
+
+        let zero = DenseMatrix.zero<double> dsites.RowCount ctrs.RowCount
+        (fill 1 zero) |> Matrix.map Math.Sqrt
+
 
 module Sequences =
 

@@ -7,6 +7,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "RBFApproximation.Library.Te
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "RBFApproximation.Library", "RBFApproximation.Library\RBFApproximation.Library.fsproj", "{581C7FFF-A4E5-4A27-84FB-056B57068236}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "RBFApproximation.Harness", "RBFApproximation.Harness\RBFApproximation.Harness.fsproj", "{5557E324-27A4-4157-A81A-A39820539FA0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{581C7FFF-A4E5-4A27-84FB-056B57068236}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{581C7FFF-A4E5-4A27-84FB-056B57068236}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{581C7FFF-A4E5-4A27-84FB-056B57068236}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5557E324-27A4-4157-A81A-A39820539FA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5557E324-27A4-4157-A81A-A39820539FA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5557E324-27A4-4157-A81A-A39820539FA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5557E324-27A4-4157-A81A-A39820539FA0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
