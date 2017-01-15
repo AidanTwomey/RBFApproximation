@@ -30,7 +30,7 @@ module Geometry =
                     dm
 
         let zero = DenseMatrix.zero<double> dsites.RowCount ctrs.RowCount
-        (fill 1 zero) |> Matrix.map Math.Sqrt
+        (fill 0 zero) |> Matrix.map Math.Sqrt
 
 
 module Sequences =

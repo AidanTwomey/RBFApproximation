@@ -28,6 +28,6 @@ let main argv =
 
     let im = dm_data |> Matrix.map (gaussian 21.1)
     let em = dm_eval |> Matrix.map (gaussian 21.1)
-    let Pf = im.Solve(rhs)
+    let Pf = em * im.Solve(rhs)
 
     0 // return an integer exit code
