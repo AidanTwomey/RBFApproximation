@@ -58,6 +58,7 @@
     <None Include="dsites.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Compile Include="Interpolate.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Core">
