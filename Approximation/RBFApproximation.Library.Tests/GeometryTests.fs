@@ -37,6 +37,12 @@ module ``Geometry Tests`` =
 
 
     [<Test>]
+    let ``linspace is correct`` () =
+
+        let lspace = (Geometry.linspace 0.0 1.0 6) 
+        lspace |> should equal (vector [0.0;0.2;0.4;0.6;0.8;1.0])
+
+    [<Test>]
     let ``distance matrix calculates correctly``() =
         let dsites = matrix [[0.50000;0.33333]
                              [0.25000;0.66667]

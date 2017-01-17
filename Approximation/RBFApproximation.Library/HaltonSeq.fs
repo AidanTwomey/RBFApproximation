@@ -17,6 +17,16 @@ module Geometry =
 
     let ngrid (X1:Vector<double>) (X2:Vector<double>) =
         (DenseMatrix.init X1.Count X2.Count (fun i j -> X1.[i]),DenseMatrix.init X1.Count X2.Count (fun i j -> X2.[j]))
+    
+    let meshgrid (X1:Vector<double>) (X2:Vector<double>) =
+        let (x,y) = (ngrid X1 X2)
+        (x.Transpose(), y.Transpose())
+
+    let linspace a b n = 
+        let stepSize = (b - a) / (double)(n-1)
+        let nextStep (i:int) = a + (stepSize * (double)i)
+
+        DenseVector.init n nextStep
 
     let distanceMatrix (dsites:Matrix<double>) (ctrs:Matrix<double>) =
         
