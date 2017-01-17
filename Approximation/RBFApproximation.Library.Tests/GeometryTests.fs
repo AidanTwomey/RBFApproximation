@@ -40,7 +40,9 @@ module ``Geometry Tests`` =
     let ``linspace is correct`` () =
 
         let lspace = (Geometry.linspace 0.0 1.0 6) 
-        lspace |> should equal (vector [0.0;0.2;0.4;0.6;0.8;1.0])
+        let expected = vector [0.0;0.2;0.4;0.6;0.8;1.0]
+
+        (lspace - expected).L2Norm() |> should be (lessThan 0.00001)
 
     [<Test>]
     let ``distance matrix calculates correctly``() =
