@@ -28,6 +28,19 @@ module Geometry =
 
         DenseVector.init n nextStep
 
+    let generateEvaluationGrid n =
+        let grid = linspace 0.0 1.0 n
+        let (x,y) = meshgrid grid grid
+
+        let xPoints = x |> Matrix.toSeq 
+        let yPoints = y |> Matrix.toSeq
+
+        let rows = Seq.zip xPoints yPoints |> Seq.map (fun (xp,yp) -> vector[ xp;yp ]) 
+
+//        DenseMatrix.create (n*n) 2 (fun i j -> if ( i = 1) then (x.[i mod n, i mod n]) else (y.[i mod n, i mod n]))
+
+        DenseMatrix.ofRowSeq rows
+
     let distanceMatrix (dsites:Matrix<double>) (ctrs:Matrix<double>) =
         
         let rec fill i dm =

@@ -56,6 +56,9 @@
     <None Include="Script1.fsx" />
     <Content Include="App.config" />
     <Compile Include="GeometryTests.fs" />
+    <None Include="epoints.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Core">

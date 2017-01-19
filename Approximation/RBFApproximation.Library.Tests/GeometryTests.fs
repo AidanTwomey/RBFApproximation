@@ -17,6 +17,7 @@ module ``Geometry Tests`` =
     open RBFApproximation.Library
     open RBFApproximation.Library.Geometry
     open MathNet.Numerics.LinearAlgebra
+    open MathNet.Numerics.Data.Text
 
     let norm2 = (norm 2)
 
@@ -34,6 +35,15 @@ module ``Geometry Tests`` =
         
         X1 |> should equal grid1
         X2 |> should equal grid2
+
+    [<Test>]
+    let ``meshgrid is correct`` () =
+        let gridpointSource = @"C:\src\RBFApproximation\Approximation\RBFApproximation.Library.Tests\bin\Debug\epoints.csv"
+        let expected = DelimitedReader.Read<double>(gridpointSource, false, ",", false)
+
+        let grid = generateEvaluationGrid 40
+
+        (grid - expected).L2Norm() |> should be (lessThan 0.0001)
 
 
     [<Test>]
