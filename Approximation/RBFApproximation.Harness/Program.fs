@@ -1,7 +1,7 @@
 ﻿open RBFApproximation.Library.RadialFunctions
 open RBFApproximation.Library.Functions
 open RBFApproximation.Library.Geometry
-//open RBFApproximation.Library.Interpolate
+open RBFApproximation.Library.Interpolate
 open MathNet.Numerics.LinearAlgebra
 open MathNet.Numerics.Data.Text
 
@@ -26,6 +26,6 @@ let main argv =
 
     let rhs = Vector.Build.DenseOfEnumerable( ctrs.EnumerateRows() |> Seq.map ( fun r -> franke r.[0] r.[1] ) )
     
-    //let Pf = interpolate2D ctrs rhs epoints
+    let Pf = interpolate2D ctrs rhs epoints
 
     0
