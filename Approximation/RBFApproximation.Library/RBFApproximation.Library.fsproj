@@ -55,9 +55,6 @@
     <Compile Include="HaltonSeq.fs" />
     <Content Include="packages.config" />
     <None Include="Script1.fsx" />
-    <None Include="dsites.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <Compile Include="Interpolate.fs" />
   </ItemGroup>
   <ItemGroup>

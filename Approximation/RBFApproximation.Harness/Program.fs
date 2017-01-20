@@ -12,20 +12,13 @@ open System
 [<EntryPoint>]
 let main argv = 
 
-    let N = 1089
+    let ctrs = DelimitedReader.Read<double>( @"C:\data\swaption\20170119\swaptionpoints_strike_ctrs.csv", false, ",", false)
 
-    let source = @"C:\src\RBFApproximation\Approximation\RBFApproximation.Library\bin\Debug\dsites.csv"
-    let ctrs = DelimitedReader.Read<double>(source, false, ",", false)
+    let neval = 40
 
-    let epointSource = @"C:\src\RBFApproximation\Approximation\RBFApproximation.Harness\bin\Debug\epoints.csv"
-    let epoints = DelimitedReader.Read<double>(epointSource, false, ",", false)
-
-    let ep = meshgrid
-
-    let neval = 20
-
-    let rhs = Vector.Build.DenseOfEnumerable( ctrs.EnumerateRows() |> Seq.map ( fun r -> franke r.[0] r.[1] ) )
+    let rhs = DelimitedReader.Read<double>( @"C:\data\swaption\20170119\swaptionpoints_strike_ctrs.csv", false, ",", false).Column(0)
     
-    let Pf = interpolate2D ctrs rhs epoints
+    let Pf = interpolate2D ctrs rhs neval (gaussian 21.1)
 
+    DelimitedWriter.Write(@"C:\data\surface.csv", Pf, ",")
     0

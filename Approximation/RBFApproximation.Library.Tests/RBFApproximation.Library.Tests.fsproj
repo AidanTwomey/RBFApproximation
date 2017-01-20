@@ -50,13 +50,20 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
-    <Compile Include="AssemblyInfo.fs" />
-    <Content Include="packages.config" />
-    <Compile Include="HaltonSeqTests.fs" />
-    <None Include="Script1.fsx" />
     <Content Include="App.config" />
+    <Content Include="packages.config" />
+    <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="HaltonSeqTests.fs" />
     <Compile Include="GeometryTests.fs" />
+    <Compile Include="InterpolationTests.fs" />
+    <None Include="Script1.fsx" />
     <None Include="epoints.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Pf.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="dsites.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

@@ -31,4 +31,16 @@ let grid = linspace 0.0 1.0 40
 //
 //Pf.ToString()
 
+//let none = s |> Seq.skip 3 |> Seq.skip 3 |> Seq.skip 3 |> Seq.isEmpty
 
+let toRows s = 
+    let rec loop rows remain =
+        if Seq.isEmpty remain 
+            then 
+                rows
+            else
+                let (row, skipped) = (remain |> Seq.take 3, remain |> Seq.skip 3)
+                loop (row::rows) skipped
+    loop [] s |> List.rev
+
+let squareMatrix = toRows [1;2;3;4;5;6;7;8;9;]
